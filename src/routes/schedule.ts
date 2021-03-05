@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import AccountController from '../controllers/account';
+import ScheduleController from '../controllers/schedule';
+const router = Router();
+const controller = new ScheduleController();
+const accountController = new AccountController();
+router.post('/semesters', accountController.validateAccount, controller.showSemesters);
+router.post('/save', accountController.validateAccount, controller.saveSchedule);
+router.post('/search', controller.searchSchedule.bind(controller));
+export default router;

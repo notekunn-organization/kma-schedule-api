@@ -1,0 +1,36 @@
+{
+	"name": "kma-schedule-api",
+	"version": "1.0.0",
+	"description": "Kma schedule api",
+	"main": "index.js",
+	"scripts": {
+		"db:studio": "prisma studio --experimental",
+		"db:migrate": "prisma migrate dev --preview-feature",
+		"db:push": "prisma db push --preview-feature",
+		"update": "prisma generate",
+		"update:watch": "prisma generate --watch",
+		"go": "npm run db:migrate && npm run db:push && npm run update",
+		"start": "node dist/index.ts",
+		"dev": "nodemon src/index.ts",
+		"build": "tsc",
+		"postinstall": "npm run update && npm run build"
+	},
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@notekunn/qldt-kma": "^1.0.2",
+		"@prisma/client": "^2.18.0",
+		"@types/express": "^4.17.11",
+		"@types/jsonwebtoken": "^8.5.0",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"jsonwebtoken": "^8.5.1",
+		"moment-timezone": "^0.5.33",
+		"prisma": "^2.18.0",
+		"ts-node": "^9.1.1",
+		"typescript": "^4.2.2"
+	},
+	"prisma": {
+		"schema": "src/prisma/schema.prisma"
+	}
+}

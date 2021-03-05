@@ -1,0 +1,31 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["createMany"]
+}
+
+model Account {
+  studentCode String     @id
+  password    String
+  cookie      String
+  name        String?
+  schedules   Schedule[]
+}
+
+model Schedule {
+  day         String
+  lesson      String
+  subjectCode String
+  subjectName String
+  className   String
+  room        String
+  teacher     String?
+
+  Account     Account @relation(fields: [studentCode], references: [studentCode])
+  studentCode String
+  @@id([day, lesson, studentCode])
+}
