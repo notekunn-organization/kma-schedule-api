@@ -1,0 +1,7 @@
+{
+	"ENV": {
+		"DATABASE_URL": "postgres://user:pass@postgres:5432/db",
+		"NODE_ENV": "development",
+		"PORT": 3000
+	}
+}
